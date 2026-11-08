@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasury Transaction Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <header class="header">
+            <div>
+                <p class="eyebrow">TREASURY MANAGEMENT SYSTEM</p>
+                <h1>Transaction Manager</h1>
+                <p class="subtitle">Manage, search, and organize your transactions.</p>
+            </div>
+
+            <div class="header-date" id="currentDate"></div>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <p>Total Transactions</p>
+                <h2 id="totalTransactions">0</h2>
+                <span>All recorded transactions</span>
+            </div>
+
+            <div class="stat-card">
+                <p>Total Transaction Value</p>
+                <h2 id="totalAmount">Rp 0</h2>
+                <span>Combined transaction amount</span>
+            </div>
+
+            <div class="stat-card">
+                <p>Completed Transactions</p>
+                <h2 id="completedTransactions">0</h2>
+                <span>Successfully processed</span>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <h2>Search Transactions</h2>
+                    <p>Find transactions using different search algorithms.</p>
+                </div>
+            </div>
+
+            <div class="controls-grid">
+                <div class="form-group">
+                    <label for="searchType">Search Algorithm</label>
+                    <select id="searchType">
+                        <option value="linear">Linear Search - Customer Name</option>
+                        <option value="binary">Binary Search - Transaction ID</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="searchInput" id="searchLabel">Customer Name</label>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Enter customer name..."
+                    >
+                </div>
+
+                <div class="button-group">
+                    <button id="searchButton" class="btn btn-primary">
+                        Search
+                    </button>
+                    <button id="resetSearchButton" class="btn btn-secondary">
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <div id="searchInfo" class="info-message">
+                Linear Search checks each transaction until a matching customer is found.
+            </div>
+
+            <div id="searchResult" class="search-result hidden"></div>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <h2>Sort Transactions</h2>
+                    <p>Organize transactions using different sorting algorithms.</p>
+                </div>
+            </div>
+
+            <div class="controls-grid">
+                <div class="form-group">
+                    <label for="sortAlgorithm">Sorting Algorithm</label>
+                    <select id="sortAlgorithm">
+                        <option value="bubble">Bubble Sort - O(n²)</option>
+                        <option value="merge">Merge Sort - O(n log n)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sortField">Sort By</label>
+                    <select id="sortField">
+                        <option value="amount">Amount</option>
+                        <option value="date">Date</option>
+                        <option value="customer">Customer Name</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sortOrder">Sort Order</label>
+                    <select id="sortOrder">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button id="sortButton" class="btn btn-primary">
+                        Apply Sorting
+                    </button>
+                    <button id="resetSortButton" class="btn btn-secondary">
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <div id="sortInfo" class="info-message">
+                Bubble Sort has O(n²) time complexity, while Merge Sort has O(n log n).
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="table-heading">
+                <div>
+                    <h2>Transaction Records</h2>
+                    <p id="tableDescription">Showing all transactions.</p>
+                </div>
+
+                <span class="record-count" id="recordCount">0 Records</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionTable">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="emptyState" class="empty-state hidden">
+                <h3>No transactions found</h3>
+                <p>Try another search keyword or reset the filters.</p>
+            </div>
+        </section>
+
+        <footer>
+            Treasury Transaction Manager · Frontend Bootcamp Session 3
+        </footer>
+
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/algorithms.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
